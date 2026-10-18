@@ -1,0 +1,108 @@
+/* Reset margin dan mengatur font dasar */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Membentuk form menjadi kartu (card) bergaya modern */
+.login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 380px;
+    border-top: 6px solid #2e5c3e; /* Aksen hijau rimba/alam */
+}
+
+h2 {
+    text-align: center;
+    color: #2e5c3e;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a4a4a;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Desain input yang ergonomis */
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd1ce;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus {
+    border-color: #2e5c3e;
+    outline: none;
+}
+
+/* Tombol solid */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2e5c3e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1e3b28;
+}
+
+/* Notifikasi error yang mencolok tapi tetap rapi */
+.error-msg {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.link-register {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.link-register a {
+    color: #2e5c3e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-register a:hover {
+    text-decoration: underline;
+}

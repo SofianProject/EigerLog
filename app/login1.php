@@ -74,3 +74,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p>Belum punya akun? <a href="registrasi.php">Daftar di sini</a>.</p>
 </body>
 </html>
+

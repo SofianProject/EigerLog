@@ -1,0 +1,102 @@
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.detail-container {
+    max-width: 700px;
+    width: 100%;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-top: 6px solid #2e5c3e;
+    margin-top: 30px;
+}
+
+.header-section {
+    border-bottom: 2px solid #e2e8e4;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #2e5c3e;
+    margin: 0 0 10px 0;
+    font-size: 26px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Tabel Detail */
+.table-detail {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-detail th {
+    text-align: left;
+    padding: 15px 20px;
+    background-color: #f9fbfa;
+    color: #555;
+    width: 35%;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+}
+
+.table-detail td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Badge Status Jalur (sama seperti halaman daftar) */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+.badge-resmi { background-color: #5cb85c; }
+.badge-tutup { background-color: #d9534f; }
+.badge-bersyarat { background-color: #f0ad4e; }
+
+/* Box Catatan Khusus */
+.note-box {
+    background-color: #fdfbf7;
+    border-left: 4px solid #f0ad4e;
+    padding: 12px 15px;
+    margin: 0;
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+    color: #555;
+}
+
+/* Tombol Kembali */
+.btn-back {
+    display: inline-block;
+    margin-top: 35px;
+    background-color: #e2e8e4;
+    color: #333;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #cdd6cf;
+}

@@ -1,0 +1,145 @@
+/* Reset & Base */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigasi Atas */
+.navbar {
+    background-color: #2e5c3e;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar .user-info {
+    font-size: 16px;
+}
+
+.navbar .user-info b {
+    color: #e0f2e5;
+}
+
+.btn-logout {
+    background-color: #c9302c;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #ac2925;
+}
+
+/* Container Utama */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.header-title {
+    color: #2e5c3e;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8e4;
+    padding-bottom: 10px;
+}
+
+/* Tombol Aksi */
+.action-bar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-tambah {
+    background-color: #2e5c3e;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-tambah:hover {
+    background-color: #1e3b28;
+}
+
+/* Pesan Sukses (PRG) */
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 12px 15px;
+    border: 1px solid #d6e9c6;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Desain Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 14px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f1f5f2;
+}
+
+/* Badge Status Jalur */
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+.badge-resmi { background-color: #5cb85c; }
+.badge-tutup { background-color: #d9534f; }
+.badge-bersyarat { background-color: #f0ad4e; }
+
+/* Tombol Detail */
+.btn-detail {
+    background-color: #5bc0de;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.btn-detail:hover {
+    background-color: #31b0d5;
+}
