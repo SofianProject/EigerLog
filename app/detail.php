@@ -4,28 +4,29 @@ require 'koneksi.php';
 
 wajibLogin();
 
-// 1. Tangkap dan Validasi Parameter ID dari URL
+// memastikan input berupa integer untuk mencegah SQL Injection
 $id = $_GET['id'] ?? null;
-
 if (!filter_var($id, FILTER_VALIDATE_INT)) {
     die("Akses ditolak: ID tidak valid.");
 }
 $id = (int)$id;
 
 try {
-    // 2. Kueri Detail Data
     $sql = "SELECT e.*, p.nama AS nama_penginput 
             FROM ekspedisi e 
             JOIN pengguna p ON e.pengguna_id = p.id 
             WHERE e.id = ?";
             
+    //Memngikat nilai parameter $id dengan tipe integer
+    //Jika attacker mencoba memasukkan query string tambahan pada URL
+    //MySQL akan membuangnya karena hanya mengenali satu nilai numerik murni.
     $stmt = $koneksi->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $hasil = $stmt->get_result();
 
     if ($hasil->num_rows === 0) {
-        die("Data logbook dengan ID tersebut tidak ditemukan.");
+        die("Data kegiatan dengan ID tersebut tidak ditemukan.");
     }
 
     $data = $hasil->fetch_assoc();
@@ -40,42 +41,50 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Ekspedisi - <?= e($data['lokasi_gunung']) ?></title>
+    <title>Detail Kegiatan - <?= e($data['kegiatan']) ?></title>
     <link rel="stylesheet" href="../css/detail.css">
+    <style>
+        .badge-resmi { background-color: #5cb85c; }
+        .badge-non-resmi { background-color: #5bc0de; }
+        .badge-penjelajahan { background-color: #f0ad4e; }
+    </style>
 </head>
 <body>
 
     <div class="detail-container">
         <div class="header-section">
-            <h2>Laporan Detail Ekspedisi</h2>
-            <div class="subtitle">Sistem Informasi Jejak Alam EigerLog</div>
+            <h2>Laporan Detail Kegiatan</h2>
+            <div class="subtitle">Eiger Corps - Repositori Logbook</div>
         </div>
 
         <table class="table-detail">
             <tr>
-                <th>Lokasi / Nama Gunung</th>
-                <td><b><?= e($data['lokasi_gunung']) ?></b></td>
+                <th>Nama Kegiatan</th>
+                <td><b><?= e($data['kegiatan']) ?></b></td>
             </tr>
             <tr>
-                <th>Ketinggian Puncak</th>
-                <td><?= (int)$data['ketinggian_mdpl'] ?> MDPL</td>
+                <th>Lokasi / Titik Kumpul</th>
+                <td><?= e($data['lokasi_kegiatan']) ?></td>
             </tr>
             <tr>
-                <th>Status Jalur Saat Ini</th>
+                <th>Tanggal Pelaksanaan</th>
+                <td><?= date("d F Y", strtotime($data['tanggal_kegiatan'])) ?></td>
+            </tr>
+            <tr>
+                <th>Jenis Kegiatan</th>
                 <td>
                     <?php 
-                        $statusClass = '';
-                        if ($data['status_jalur'] === 'Resmi') $statusClass = 'badge-resmi';
-                        elseif ($data['status_jalur'] === 'Tutup') $statusClass = 'badge-tutup';
-                        elseif ($data['status_jalur'] === 'Buka Bersyarat') $statusClass = 'badge-bersyarat';
+                        $jenisClass = '';
+                        if ($data['jenis_kegiatan'] === 'Resmi') $jenisClass = 'badge-resmi';
+                        elseif ($data['jenis_kegiatan'] === 'Non Resmi') $jenisClass = 'badge-non-resmi';
+                        elseif ($data['jenis_kegiatan'] === 'Penjelajahan') $jenisClass = 'badge-penjelajahan';
                     ?>
-                    <span class="badge <?= $statusClass ?>"><?= e($data['status_jalur']) ?></span>
+                    <span class="badge <?= $jenisClass ?>"><?= e($data['jenis_kegiatan']) ?></span>
                 </td>
             </tr>
             <tr>
-                <th>Catatan Khusus / Perizinan</th>
+                <th>Catatan Khusus / Perlengkapan</th>
                 <td>
-                    <!-- Teks di dalam note-box tetap di-escape dan di-nl2br agar baris baru tidak hilang -->
                     <?php if (empty($data['catatan_khusus'])): ?>
                         <span style="color: #999; font-style: italic;">Tidak ada catatan khusus.</span>
                     <?php else: ?>
@@ -84,12 +93,12 @@ try {
                 </td>
             </tr>
             <tr>
-                <th>Dicatat Oleh (Admin)</th>
+                <th>Dicatat Oleh (Pengurus)</th>
                 <td><?= e($data['nama_penginput']) ?></td>
             </tr>
         </table>
         
-        <a href="daftar.php" class="btn-back">← Kembali ke Daftar</a>
+        <a href="daftar.php" class="btn-back">← Kembali ke Silabus</a>
     </div>
 
 </body>

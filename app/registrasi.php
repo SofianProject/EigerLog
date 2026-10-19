@@ -13,6 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username) || empty($nama) || empty($sandi)) {
         $error = "Semua kolom wajib diisi.";
     } else {
+        // verifikai sandi menggunakan password_verify untuk mengecek apakah sandi yang di masukkan sesuai dengan has yang ada di database
+        // di hash yang ada di database di buat menggunakan has generator
+        // akan muncul pesan error ketika user ataupun password yang di masukkan tidak sesuai dengan database
+        // pesan error yang muncul sama baik ketika username salah atau passwor dyang salah untuk menghindari kebobolan
         $hash_sandi = password_hash($sandi, PASSWORD_DEFAULT);
 
         try {
@@ -22,6 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $sukses = "Registrasi berhasil! Silakan login.";
         } catch (mysqli_sql_exception $e) {
+            //Menangkap pelanggaran constraint UNIQUE (kode error 1062).
+            // Jika username sudah ada di database, jangan tampilkan error SQL kotor,
+            // tetapi berikan pesan yang ramah kepada pengguna.
             if ($e->getCode() == 1062) {
                 $error = "Maaf, username '$username' sudah dipakai. Silakan pilih username lain.";
             } else {
